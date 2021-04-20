@@ -148,15 +148,15 @@ EMAIL_HOST_PASSWORD='xrl8xdgta'
 #STATIC_URL = '/static/'
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL='/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),os.path.join(BASE_DIR,'media'))
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 django_heroku.settings(locals())
 STATIC_FILES = (
     os.path.join(BASE_DIR,'static'),
 )
 
-#MEDIA_URL='/media/'
-#MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 MESSAGE_TAGS={
     message_constants.DEBUG:'debug',
