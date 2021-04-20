@@ -13,7 +13,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '42037h6jqq=j&-r0ydft1@!bmz4*1mr*h#ay!=cyj#+m-wp868'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,12 +81,19 @@ WSGI_APPLICATION = 'webs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE':'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bdd',
+        'USER':'postgres',
+        'PASSWORD':'1234',
+        'HOST':'localhost',
+        'DATABASE_PORT':'5432',
     }
 }
 
 '''
+
+
+
 import dj_database_url
 from decouple import config
 DATABASES = {
@@ -160,3 +167,4 @@ MESSAGE_TAGS={
     message_constants.ERROR:'danger',
 }
 STATIC_FILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
