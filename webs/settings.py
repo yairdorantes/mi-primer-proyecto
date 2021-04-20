@@ -166,4 +166,4 @@ MESSAGE_TAGS={
     message_constants.ERROR:'danger',
 }
 STATIC_FILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+#DEFAULT_AUTO_FIELD='django.db.models.AutoField'
