@@ -36,8 +36,10 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'markdown_deux',
+    'storages',
     
 ]
+
 
 #paquetesproyecto
 
@@ -90,9 +92,8 @@ DATABASES = {
     }
 }
 
+
 '''
-
-
 import dj_database_url
 from decouple import config
 DATABASES = {
@@ -100,9 +101,14 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 '''
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -146,13 +152,14 @@ EMAIL_HOST_PASSWORD='xrl8xdgta'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 #STATIC_URL = '/static/'
+
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL='/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 django_heroku.settings(locals())
 STATIC_FILES = (
-    os.path.join(BASE_DIR,'static'),
+    os.path.join(BASE_DIR,'static'),os.path.join(BASE_DIR,'media')
 )
 
 MEDIA_URL='/media/'
@@ -166,4 +173,6 @@ MESSAGE_TAGS={
     message_constants.ERROR:'danger',
 }
 STATIC_FILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-#DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
