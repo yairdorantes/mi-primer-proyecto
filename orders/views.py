@@ -45,7 +45,7 @@ def send_order_email(**kwargs):
         'username':kwargs.get('username'),
     })
     plain_message=strip_tags(html_message)
-    from_email='yairmasterlol@gmail.com'
+    from_email='companyseller.ml@gmail.com'
     to=kwargs.get('user_email')
     
     send_mail(subject,plain_message,from_email,[to],html_message=html_message)
