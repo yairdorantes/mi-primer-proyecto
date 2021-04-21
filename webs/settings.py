@@ -3,6 +3,8 @@ from pathlib import Path
 import os
 import django_heroku
 from django.contrib.messages import constants as message_constants
+import cloudinary
+import cloudinary_storage
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,8 +38,8 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'markdown_deux',
-    'storages',
-    
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 
@@ -159,7 +161,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 django_heroku.settings(locals())
 STATIC_FILES = (
-    os.path.join(BASE_DIR,'static'),os.path.join(BASE_DIR,'media')
+    os.path.join(BASE_DIR,'static'),
 )
 
 MEDIA_URL='/media/'
@@ -172,7 +174,12 @@ MESSAGE_TAGS={
     message_constants.WARNING:'warning',
     message_constants.ERROR:'danger',
 }
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'tolumaster',
+    'API_KEY': '238229748389954',
+    'API_SECRET': '64KwWcwxJ7OikMWHiTv7gUdE_5o',
+}
 STATIC_FILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
