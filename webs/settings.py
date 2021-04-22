@@ -147,8 +147,8 @@ USE_TZ = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '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'
-EMAIL_PORT = 465
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'companyseller.ml@gmail.com'
 
