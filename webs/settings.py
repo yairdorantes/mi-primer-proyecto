@@ -143,7 +143,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-MAIL_DRIVER=sendmail
+MAIL_DRIVER=smtp
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST = 'smtp.gmail.com'
