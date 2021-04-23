@@ -25,10 +25,9 @@ class Post(models.Model):
     imagen=models.ImageField(upload_to='rutinas',null=False,blank=False,verbose_name='imagen post')
     fecha_alta=models.DateTimeField(auto_now_add=True,verbose_name='Fecha alta')
     fecha_actualizacion=models.DateTimeField(auto_now_add=True,verbose_name='Fecha actualizacion')
-    def delete(self,*args,**kwargs):
-        if path.isfile(self.imagen.path):
-            os.remove(self.imagen.path)
-            super(Post,self).delete(*args,**kwargs)
+    def delete(self):
+        self.imagen.storage.delete(self.song.name)
+        super().delete()
     def __str__(self):
         return self.titulo
     class meta:
