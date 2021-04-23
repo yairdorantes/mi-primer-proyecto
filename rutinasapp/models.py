@@ -1,4 +1,4 @@
-from cloudinary.models import CloudinaryField
+
 from django.db import models
 # Create your models here.
 from django.contrib.auth.models import User
@@ -25,9 +25,9 @@ class Post(models.Model):
     imagen=models.ImageField(upload_to='rutinas',null=False,blank=False,verbose_name='imagen post')
     fecha_alta=models.DateTimeField(auto_now_add=True,verbose_name='Fecha alta')
     fecha_actualizacion=models.DateTimeField(auto_now_add=True,verbose_name='Fecha actualizacion')
-    def delete(self):
-        self.imagen.storage.delete()
-        super().delete()
+    def delete(self, *args, **kwargs):
+        self.imagen.delete()
+        super().delete(*args,**kwargs)
     def __str__(self):
         return self.titulo
     class meta:
