@@ -26,7 +26,7 @@ class Post(models.Model):
     fecha_alta=models.DateTimeField(auto_now_add=True,verbose_name='Fecha alta')
     fecha_actualizacion=models.DateTimeField(auto_now_add=True,verbose_name='Fecha actualizacion')
     def delete(self):
-        self.imagen.storage.delete(self.song.name)
+        self.imagen.storage.delete()
         super().delete()
     def __str__(self):
         return self.titulo
