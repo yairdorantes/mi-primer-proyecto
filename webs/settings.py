@@ -1,7 +1,6 @@
 
 from pathlib import Path
 import os
-import django_heroku
 from django.contrib.messages import constants as message_constants
 import cloudinary
 import cloudinary_storage
@@ -85,14 +84,22 @@ WSGI_APPLICATION = 'webs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd2aplu6aab6o5e',
-        'USER':'cnsyrnjwbdgqzb',
-        'PASSWORD':'aad0d302e24fddae0bede216c17b31ab2aa13844820972d18a454e63d5511f91',
-        'HOST':'ec2-54-224-120-186.compute-1.amazonaws.com',
-        'DATABASE_PORT':'5432',
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER':'postgres',
+        'PASSWORD':'A8xCf5upkQ15s9yncIS1',
+        'HOST':'containers-us-west-27.railway.app',
+        'PORT':'6953',
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 
@@ -140,14 +147,12 @@ DEFAULT_FROM_EMAIL = 'companyseller.ml@gmail.com'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-#STATIC_URL = '/static/'
-
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL='/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
+
+STATIC_ROOT=os.path.join(BASE_DIR,'miwebapp/static')
+# STATICFILES_DIRS = (os.path.join(BASE_DIR,'static'),)
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-django_heroku.settings(locals())
-STATIC_FILES = (
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
 
@@ -166,7 +171,8 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '238229748389954',
     'API_SECRET': '64KwWcwxJ7OikMWHiTv7gUdE_5o',
 }
-STATIC_FILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+# STATIC_FILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
